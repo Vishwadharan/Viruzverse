@@ -9,6 +9,7 @@
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(78, 30, 148, 0.15); 
   border: 1px solid rgba(255, 255, 255, 0.2);
+  /* margin: 40px; */
 }
 
 .about h2 {

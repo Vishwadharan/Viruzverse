@@ -27,14 +27,17 @@ const Navbar = () => {
           <RouterLink to="/#about" onClick={closeMenu}>About</RouterLink>
         </li>
         <li>
+          <RouterLink to="/#industryfocus" onClick={closeMenu}>Industry Focus</RouterLink>
+        </li>
+        <li>
           <RouterLink to="/#programme" onClick={closeMenu}>Programme</RouterLink>
         </li>
         <li>
-          <RouterLink to="/#services" onClick={closeMenu}>Services</RouterLink>
+          <RouterLink to="/#services" onClick={closeMenu}>Careers</RouterLink>
         </li>
-        <li>
+        {/* <li>
           <RouterLink to="/#careers" onClick={closeMenu}>Careers</RouterLink>
-        </li>
+        </li> */}
         <li>
           <a
             href="https://forms.gle/iuWEEL51DGoTMzHy8"
