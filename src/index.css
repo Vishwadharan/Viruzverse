@@ -1,0 +1,28 @@
+/* Reset body and html to occupy full viewport without overflow */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Ensure main content grows to occupy space, pushing footer down */
+main {
+  flex-grow: 1;
+}
+
+footer {
+  margin-top: auto; /* Sticks footer to bottom */
+}
+
+/* Optional: Background on body to ensure no white areas appear */
+body {
+  background: radial-gradient(circle at 10% 20%, rgb(186, 190, 245) 0%, rgb(192, 192, 245) 33.1%, rgb(218, 203, 246) 90%);
+  background-attachment: fixed;
+}
