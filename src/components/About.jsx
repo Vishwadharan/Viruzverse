@@ -9,7 +9,7 @@ const About = () => {
       <div className="about-section">
         <h3>Who We Are</h3>
         <p>
-          Viruzverse is a division of Code Kadai Solutions, driven by the mission to bridge the gap between industry demands and talent. 
+          Viruzverse is driven by the mission to bridge the gap between industry demands and talent. 
           We create impactful technology solutions in web development, AI, cloud computing, IoT, and DevOps, while empowering students 
           to develop critical skills aligned with market needs. Our approach combines real-world problem-solving with expert-led training, 
           setting students up for successful, industry-ready careers.
@@ -19,18 +19,15 @@ const About = () => {
       <div className="about-section">
         <h3>Our Vision</h3>
         <p>
-          We envision a world where innovation is accessible and practical solutions to real-world challenges are within reach. 
-          By connecting students with industry experts and integrating hands-on experience with cutting-edge technology, Viruzverse 
-          builds both sustainable solutions and skilled professionals for the future.
+        To be a catalyst in empowering individuals worldwide with the skills and tools needed to navigate and innovate in a technology-driven world. Viruzverse envisions a future where real-world problems are tackled through technology, with solutions accessible to everyone, creating a truly connected and capable society.
+
         </p>
       </div>
       
       <div className="about-section">
         <h3>Our Mission</h3>
         <p>
-          To provide students and industry alike with advanced IT solutions, bridging the gap between theoretical knowledge and 
-          practical application. We foster skill development through interactive, project-based training designed to meet the latest 
-          industry demands.
+        At Viruzverse, our mission is to make technology accessible and impactful for all. We are committed to bridging the gap between tech enthusiasts and real-world challenges by providing hands-on training, fostering innovation, and delivering solutions in web, cloud, data science, and IoT. By inspiring and equipping a community of problem solvers, we aim to shape a world where technology is a force for good, available and understandable to everyone.
         </p>
       </div>
     </section>
