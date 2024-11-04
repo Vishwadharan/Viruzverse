@@ -20,21 +20,21 @@ const Navbar = () => {
         &#9776;
       </div>
       <ul className={isOpen ? 'show' : ''}>
-        <li>
-          <RouterLink to="/#home" onClick={closeMenu}>Home</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/#about" onClick={closeMenu}>About</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/#industryfocus" onClick={closeMenu}>Industry Focus</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/#programme" onClick={closeMenu}>Programme</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/#services" onClick={closeMenu}>Careers</RouterLink>
-        </li>
+      <li>
+    <a href="#home" onClick={closeMenu}>Home</a>
+  </li>
+  <li>
+    <a href="#about" onClick={closeMenu}>About</a>
+  </li>
+  <li>
+    <a href="#industryfocus" onClick={closeMenu}>Industry Focus</a>
+  </li>
+  <li>
+    <a href="#programme" onClick={closeMenu}>Programme</a>
+  </li>
+  <li>
+    <a href="#services" onClick={closeMenu}>Services</a>
+  </li>
         {/* <li>
           <RouterLink to="/#careers" onClick={closeMenu}>Careers</RouterLink>
         </li> */}

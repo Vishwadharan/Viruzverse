@@ -4,6 +4,7 @@ body, html {
   padding: 0;
   height: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 #root {
@@ -21,8 +22,11 @@ footer {
   margin-top: auto; /* Sticks footer to bottom */
 }
 
-/* Optional: Background on body to ensure no white areas appear */
+/* Background on body to ensure full coverage */
 body {
   background: radial-gradient(circle at 10% 20%, rgb(186, 190, 245) 0%, rgb(192, 192, 245) 33.1%, rgb(218, 203, 246) 90%);
   background-attachment: fixed;
+  background-size: cover; /* Ensures the background covers the entire viewport */
+  background-repeat: no-repeat; /* Prevents the background from repeating */
+  min-height: 100vh; /* Ensures body covers the full height of the viewport */
 }

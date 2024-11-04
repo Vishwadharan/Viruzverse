@@ -89,9 +89,8 @@ const ScrollToHashElement = () => {
       }
     }
   }, [location]);
-
-  return null;
 };
+
 
 const App = () => {
   useEffect(() => {
