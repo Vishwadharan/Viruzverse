@@ -62,8 +62,100 @@
 
 // export default App;
 
+
+
+
+// import React, { useEffect } from 'react';
+// import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+// import Navbar from './components/Navbar';
+// import Home from './components/Home';
+// import Highlights from './components/Highlights';
+// import About from './components/About';
+// import IndustryFocus from './components/IndustryFocus';
+// import Programme from './components/Programme';
+// import Services from './components/Services';
+// import Careers from './components/Careers';
+// import Contact from './components/Contact';
+// import Footer from './components/Footer';
+// import './App.css';
+
+// const ScrollToHashElement = () => {
+//   const location = useLocation();
+
+//   useEffect(() => {
+//     if (location.hash) {
+//       const element = document.getElementById(location.hash.substring(1));
+//       if (element) {
+//         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+//       } else {
+//         window.scrollTo({ top: 0, behavior: 'smooth' });
+//       }
+//     }
+//   }, [location]);
+// };
+
+
+// const App = () => {
+//   useEffect(() => {
+//     const handleContextMenu = (event) => {
+//       event.preventDefault();
+//     };
+
+//     const handleKeyDown = (event) => {
+//       if (event.ctrlKey && (event.key === 'u' || event.key === 'c')) {
+//         event.preventDefault();
+//       }
+//     };
+
+//     document.addEventListener('contextmenu', handleContextMenu);
+//     document.addEventListener('keydown', handleKeyDown);
+
+//     document.body.style.userSelect = 'none';
+//     document.body.style.webkitUserSelect = 'none';
+//     document.body.style.mozUserSelect = 'none';
+//     document.body.style.msUserSelect = 'none';
+
+//     return () => {
+//       document.removeEventListener('contextmenu', handleContextMenu);
+//       document.removeEventListener('keydown', handleKeyDown);
+//     };
+//   }, []);
+
+//   return (
+//     <Router>
+//       <div>
+//         <Navbar />
+//         <main>
+//           <ScrollToHashElement />
+//           <Routes>
+//             <Route
+//               path="/"
+//               element={
+//                 <>
+//                   <Home id="home" />
+//                   <Highlights />
+//                   <About id="about" />
+//                   <IndustryFocus id="industryfocus" />
+//                   <Programme id="programme" />
+//                   <Services id="services" />
+//                   <Careers id="careers" />
+//                 </>
+//               }
+//             />
+//             <Route path="/contact" element={<Contact />} />
+//           </Routes>
+//         </main>
+//         <Footer />
+//       </div>
+//     </Router>
+//   );
+// };
+
+// export default App;
+
+
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Highlights from './components/Highlights';
@@ -76,6 +168,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 
+// Add this import for useLocation
+import { useLocation } from 'react-router-dom';
+
+// Define ScrollToHashElement here
 const ScrollToHashElement = () => {
   const location = useLocation();
 
@@ -84,13 +180,12 @@ const ScrollToHashElement = () => {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   }, [location]);
-};
 
+  return null;
+};
 
 const App = () => {
   useEffect(() => {
@@ -120,10 +215,10 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToHashElement />  {/* Add this line */}
       <div>
         <Navbar />
         <main>
-          <ScrollToHashElement />
           <Routes>
             <Route
               path="/"
