@@ -13,14 +13,14 @@ const Programme = () => {
       { name: 'Node.js', icon: 'fab fa-node-js' },
     ],
     'Artificial Intelligence & Machine Learning': [
-    { name: 'Python', icon: 'fab fa-python' },
-    { name: 'TensorFlow', icon: 'fas fa-brain' }, 
-    { name: 'Keras', icon: 'fas fa-project-diagram' }, 
-    { name: 'PyTorch', icon: 'fas fa-fire-alt' }, 
-  ],
+      { name: 'Python', icon: 'fab fa-python' },
+      { name: 'TensorFlow', icon: 'fas fa-brain' },
+      { name: 'Keras', icon: 'fas fa-project-diagram' },
+      { name: 'PyTorch', icon: 'fas fa-fire-alt' },
+    ],
     'Internet of Things (IoT)': [
       { name: 'Arduino', icon: 'fas fa-microchip' },
-      { name: 'Raspberry Pi', icon: 'fas fa-microchip' }, 
+      { name: 'Raspberry Pi', icon: 'fas fa-microchip' },
       { name: 'MQTT', icon: 'fas fa-signal' },
     ],
     'Cloud Computing': [
@@ -30,7 +30,7 @@ const Programme = () => {
     ],
     'DevOps': [
       { name: 'Docker', icon: 'fab fa-docker' },
-      { name: 'Kubernetes', icon: 'fas fa-network-wired' }, 
+      { name: 'Kubernetes', icon: 'fas fa-network-wired' },
       { name: 'CI/CD', icon: 'fas fa-code-branch' },
       { name: 'Jenkins', icon: 'fab fa-jenkins' },
       { name: 'Git', icon: 'fab fa-git' },
@@ -38,11 +38,9 @@ const Programme = () => {
     'UI/UX Design': [
       { name: 'Figma', icon: 'fab fa-figma' },
       { name: 'Sketch', icon: 'fab fa-sketch' },
-      { name: 'Adobe XD', icon: 'fas fa-palette' }, 
+      { name: 'Adobe XD', icon: 'fas fa-palette' },
     ],
   };
-  
-  
 
   const descriptions = {
     'Web Development': 'Master both front-end and back-end technologies through practical projects and real-world applications in web development.',

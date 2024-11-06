@@ -55,6 +55,7 @@
 
 // export default Navbar;
 
+// Navbar.jsx
 import React, { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import '../styles/Navbar.css';
@@ -81,8 +82,7 @@ const Navbar = () => {
         <li><Link smooth to="#about" onClick={closeMenu}>About</Link></li>
         <li><Link smooth to="#industryfocus" onClick={closeMenu}>Industry Focus</Link></li>
         <li><Link smooth to="#programme" onClick={closeMenu}>Programme</Link></li>
-        <li><Link smooth to="#services" onClick={closeMenu}>Services</Link></li>
-        <li><Link smooth to="#careers" onClick={closeMenu}>Careers</Link></li>
+        <li><Link smooth to="#services" onClick={closeMenu}>Careers</Link></li>
         <li>
           <a
             href="https://forms.gle/iuWEEL51DGoTMzHy8"

@@ -154,8 +154,9 @@
 // export default App;
 
 
+// App.jsx
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Highlights from './components/Highlights';
@@ -168,10 +169,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 
-// Add this import for useLocation
-import { useLocation } from 'react-router-dom';
-
-// Define ScrollToHashElement here
 const ScrollToHashElement = () => {
   const location = useLocation();
 
@@ -188,34 +185,9 @@ const ScrollToHashElement = () => {
 };
 
 const App = () => {
-  useEffect(() => {
-    const handleContextMenu = (event) => {
-      event.preventDefault();
-    };
-
-    const handleKeyDown = (event) => {
-      if (event.ctrlKey && (event.key === 'u' || event.key === 'c')) {
-        event.preventDefault();
-      }
-    };
-
-    document.addEventListener('contextmenu', handleContextMenu);
-    document.addEventListener('keydown', handleKeyDown);
-
-    document.body.style.userSelect = 'none';
-    document.body.style.webkitUserSelect = 'none';
-    document.body.style.mozUserSelect = 'none';
-    document.body.style.msUserSelect = 'none';
-
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
   return (
     <Router>
-      <ScrollToHashElement />  {/* Add this line */}
+      <ScrollToHashElement />
       <div>
         <Navbar />
         <main>
