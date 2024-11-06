@@ -187,7 +187,6 @@ const ScrollToHashElement = () => {
 const App = () => {
   return (
     <Router>
-      <ScrollToHashElement />
       <div>
         <Navbar />
         <main>

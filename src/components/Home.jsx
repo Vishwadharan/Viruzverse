@@ -25,7 +25,6 @@
 // export default Home;
 
 import React from 'react';
-import { HashLink as Link } from 'react-router-hash-link'; 
 import '../styles/Home.css';
 import homeImage from '../images/home.png';
 
@@ -37,9 +36,9 @@ const Home = () => {
         <p>
           At Viruzverse, we blend technology and innovation to build solutions for real-world problems, while nurturing the next generation of IT leaders. Join us to shape the future together.
         </p>
-        <Link smooth to="#programme">
+        <a href="#programme">
           <button className="get-started-btn">Get Started</button>
-        </Link>
+        </a>
       </div>
       <div className="home-img">
         <img src={homeImage} alt="Technology" />
