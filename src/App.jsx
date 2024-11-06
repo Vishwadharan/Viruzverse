@@ -185,6 +185,44 @@ const ScrollToHashElement = () => {
 };
 
 const App = () => {
+  useEffect(() => {
+    const handleContextMenu = (event) => {
+      event.preventDefault();
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.ctrlKey && (event.key === 'u' || event.key === 'c' || event.key === 'j' || event.key === 's')) {
+        event.preventDefault();
+      }
+      if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+        event.preventDefault();
+      }
+    };
+
+    const handleKeyUp = (event) => {
+      if (event.key === 'F12') {
+        event.preventDefault();
+      }
+    };
+
+    // Disable selection and copy actions
+    document.body.style.userSelect = 'none';
+    document.body.style.webkitUserSelect = 'none';
+    document.body.style.mozUserSelect = 'none';
+    document.body.style.msUserSelect = 'none';
+
+    // Disable context menu and key events
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
+
   return (
     <Router>
       <div>

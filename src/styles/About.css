@@ -1,14 +1,16 @@
 .about {
-  padding: 60px 40px;
+  padding: 40px 40px;
   color: #333;
   text-align: center;
-  width: 80%;  
-  margin: 25px auto;  
+  width: 90%; /* Increased width for better visibility */
+  margin: 25px auto;
   border-radius: 20px;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(78, 30, 148, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  min-height: 100vh;
+  scroll-margin-top: 90px; /* Adjusts scroll position to reveal full section */
 }
 
 .about h2 {
@@ -57,7 +59,7 @@
 @media (max-width: 768px) {
   .about {
     padding: 40px 20px;
-    width: 90%;  
+    width: 95%; /* Adjusted for smaller screens */
   }
 
   .about h2 {
