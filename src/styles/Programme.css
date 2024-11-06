@@ -9,6 +9,7 @@
   text-align: center;
   position: relative;
   min-height: 100vh;
+  scroll-margin-top: 80px; 
 }
 
 .programme h2 {
