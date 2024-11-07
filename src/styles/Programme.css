@@ -1,4 +1,4 @@
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -150,4 +150,132 @@ h3 {
   .programme-box:hover {
     transform: scale(1.05);
   }
+} */
+
+/* Universal Box-Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Programme Section Styling */
+.programme {
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  scroll-margin-top: 80px;
+}
+
+.programme h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #5e2d91;
+}
+
+/* Programme Container */
+.programme-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .programme-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Programme Box Styling */
+.programme-box {
+  padding: 30px 20px;
+  margin: 10px;
+  border-radius: 12px;
+  background-color: #f0ebfc;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  position: relative;
+}
+
+.programme-box:hover {
+  background-color: #431186;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icons and Headers in Programme Box */
+.programme-box .icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #5e2d91;
+  transition: color 0.5s ease;
+}
+
+.programme-box:hover .icon {
+  color: #e9e9e9;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #5e2d91;
+  transition: color 0.5s ease;
+}
+
+.programme-box:hover h3 {
+  color: white;
+}
+
+/* Description Text */
+.programme-box p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Tools Display on Hover */
+.tools-display {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  text-align: center;
+}
+
+.programme-box:hover .tools-display {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tools Display List */
+.tools-display ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tools-display ul li {
+  font-size: 1rem;
+  color: white;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tools-display ul li i {
+  margin-right: 8px;
+  color: white;
+}
+
+/* Opacity Adjustment */
+.programme-container:hover .programme-box {
+  opacity: 0.3;
+}
+
+.programme-container:hover .programme-box:hover {
+  opacity: 1;
 }
