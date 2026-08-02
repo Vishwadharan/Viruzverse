@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
   title: "Privacy Policy — CafeAura",
@@ -11,38 +11,6 @@ const A = "#f97316";
 const A2 = "#fb923c";
 const EMAIL = "helpdesk@viruzverse.in";
 
-/* ── Inline mailto renderer ───────────────────── */
-function RenderContent({
-  text,
-  className,
-  style,
-}: {
-  text: string;
-  className?: string;
-  style?: React.CSSProperties;
-}) {
-  const parts = text.split(/(\[[^\]]+\]\(mailto:[^)]+\))/g);
-  return (
-    <p className={className} style={style}>
-      {parts.map((part, i) => {
-        const match = part.match(/^\[([^\]]+)\]\((mailto:[^)]+)\)$/);
-        if (match)
-          return (
-            <a
-              key={i}
-              href={match[2]}
-              className="underline underline-offset-2 hover:opacity-70 transition-opacity"
-              style={{ color: A }}
-            >
-              {match[1]}
-            </a>
-          );
-        return part;
-      })}
-    </p>
-  );
-}
-
 /* ── Bullet item ──────────────────────────────── */
 function Bullet({ text }: { text: string }) {
   return (
@@ -51,7 +19,7 @@ function Bullet({ text }: { text: string }) {
       style={{ color: "rgba(255,255,255,0.5)" }}
     >
       <span
-        className="mt-[8px] w-1 h-1 rounded-full shrink-0"
+        className="mt-[8px] w-1.5 h-1.5 rounded-full shrink-0"
         style={{ background: A }}
       />
       {text}
@@ -68,10 +36,10 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className="flex flex-col gap-2.5">
       <h2
-        className="text-[14px] font-bold mb-2.5"
-        style={{ color: "rgba(255,255,255,0.85)" }}
+        className="text-[15px] font-bold tracking-tight"
+        style={{ color: "rgba(255,255,255,0.9)" }}
       >
         {title}
       </h2>
@@ -80,7 +48,7 @@ function Section({
   );
 }
 
-/* ── Inline table ─────────────────────────────── */
+/* ── Inline info table ─────────────────────────── */
 function InfoTable({
   rows,
 }: {
@@ -94,7 +62,7 @@ function InfoTable({
       {rows.map(({ label, value }, i) => (
         <div
           key={label}
-          className="flex items-start gap-4 px-4 py-2.5 text-[13px]"
+          className="flex items-start gap-4 px-4 py-3 text-[13px]"
           style={{
             background:
               i % 2 === 0 ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.01)",
@@ -117,7 +85,7 @@ function InfoTable({
   );
 }
 
-/* ── SDK / data table ─────────────────────────── */
+/* ── Data table ────────────────────────────────── */
 function DataTable({
   headers,
   rows,
@@ -132,7 +100,7 @@ function DataTable({
     >
       {/* Header */}
       <div
-        className="grid px-4 py-2"
+        className="grid px-4 py-2.5"
         style={{
           gridTemplateColumns: `repeat(${headers.length}, 1fr)`,
           background: "rgba(255,255,255,0.04)",
@@ -189,15 +157,15 @@ function Callout({
 }) {
   return (
     <div
-      className="flex items-start gap-2.5 px-4 py-3 rounded-xl text-[13px] leading-[1.8] mt-3"
+      className="flex items-start gap-2.5 px-4 py-3 rounded-xl text-[13px] leading-[1.8] mt-2"
       style={{
         background: `${color}09`,
         border: `1px solid ${color}20`,
-        color: "rgba(255,255,255,0.5)",
+        color: "rgba(255,255,255,0.55)",
       }}
     >
-      <span className="shrink-0 mt-px" style={{ color }}>
-        ⚠
+      <span className="shrink-0 mt-px font-bold" style={{ color }}>
+        ⓘ
       </span>
       <span>{children}</span>
     </div>
@@ -216,13 +184,13 @@ function Divider({ opacity = "40" }: { opacity?: string }) {
   );
 }
 
-/* ══ Page ════════════════════════════════════════ */
+/* ══ Page Component ══════════════════════════════ */
 export default function CafeAuraPrivacyPolicy() {
   return (
     <main style={{ background: "#07060f", minHeight: "100vh", color: "white" }}>
       <div className="max-w-3xl mx-auto px-5 sm:px-8 py-14">
 
-        {/* Back */}
+        {/* Back Button */}
         <Link
           href="/products/cafeaura"
           className="inline-flex items-center gap-2 text-[12px] font-mono mb-8
@@ -234,12 +202,12 @@ export default function CafeAuraPrivacyPolicy() {
         </Link>
 
         {/* Header */}
-        <div className="mb-7">
+        <div className="mb-8">
           <span
             className="inline-block px-3 py-1 rounded-full text-[11px] font-mono font-semibold mb-3"
             style={{ background: `${A}12`, color: A, border: `1px solid ${A}25` }}
           >
-            CafeAura · Legal
+            CafeAura · Privacy & Legal
           </span>
           <h1
             className="font-black tracking-[-0.04em] leading-tight mb-2"
@@ -272,32 +240,31 @@ export default function CafeAuraPrivacyPolicy() {
           </div>
         </div>
 
-        {/* Intro */}
+        {/* Introduction */}
         <p
-          className="text-[14px] leading-[1.85] mb-7"
-          style={{ color: "rgba(255,255,255,0.45)" }}
+          className="text-[14px] leading-[1.85] mb-8"
+          style={{ color: "rgba(255,255,255,0.5)" }}
         >
-          Viruzverse Solutions Private Limited ("Company", "we", "our", or "us")
-          operates the Cafeaura mobile application and related services
-          (collectively, the "App"). This Privacy Policy explains how we collect,
-          use, store, share, and protect your personal data when you use our App.
-          By downloading or using the App, you agree to this Privacy Policy. If
-          you do not agree, please do not use the App.
+          Viruzverse Solutions Private Limited (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;)
+          operates the CafeAura food ordering platform and services (collectively,
+          the &quot;App&quot; or &quot;Platform&quot;). This Privacy Policy outlines how we collect,
+          use, store, and protect your information when you use CafeAura. By accessing
+          or using the Platform, you agree to the practices described in this Privacy Policy.
         </p>
 
         <Divider />
-        <div className="h-7" />
+        <div className="h-8" />
 
         {/* ── Sections ── */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-8">
 
           {/* 1 */}
-          <Section title="1. Who We Are">
+          <Section title="1. Overview & Scope">
             <InfoTable
               rows={[
-                { label: "App Name", value: "Cafeaura" },
-                { label: "Company", value: "Viruzverse Solutions Private Limited" },
-                { label: "Country", value: "India" },
+                { label: "Platform Name", value: "CafeAura" },
+                { label: "Operating Entity", value: "Viruzverse Solutions Private Limited" },
+                { label: "Jurisdiction", value: "India" },
                 {
                   label: "Contact Email",
                   value: (
@@ -316,77 +283,61 @@ export default function CafeAuraPrivacyPolicy() {
               className="text-[13.5px] leading-[1.8] mt-3"
               style={{ color: "rgba(255,255,255,0.45)" }}
             >
-              Cafeaura is a closed-network food ordering platform available
-              exclusively to verified users of participating institutional
-              communities (such as campuses, organisations, or similar
-              institutions).
+              CafeAura is a closed-network food ordering and management system designed
+              exclusively for verified members of institutional communities (such as college
+              campuses, corporate offices, or closed organization facilities).
             </p>
           </Section>
 
           {/* 2 */}
-          <Section title="2. Data We Collect">
+          <Section title="2. Information We Collect">
             <p
               className="text-[13.5px] leading-[1.8] mb-3"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              We collect only the data necessary to operate and improve the App.
+              We collect only essential data required to facilitate food ordering, order tracking,
+              and account management within your community.
             </p>
             <div className="flex flex-col gap-4">
               {[
                 {
-                  sub: "a. Account & Identity Data",
-                  tag: "Linked to your identity",
+                  sub: "a. Profile & Account Information",
+                  tag: "Required",
                   tagColor: "#f87171",
                   items: [
                     "Full name",
-                    "Email address",
-                    "Institution or campus details",
-                    "Account credentials (managed securely via authentication provider)",
+                    "Email address and phone number",
+                    "Assigned community or institution details",
+                    "Encrypted authentication credentials",
                   ],
                 },
                 {
-                  sub: "b. Order & Wallet Data",
-                  tag: "Linked to your identity",
-                  tagColor: "#f87171",
-                  items: [
-                    "Order details and history",
-                    "Wallet balance and credit/debit records",
-                    "Refund and adjustment records",
-                    "Payment status and transaction reference IDs",
-                    "Cancellation records",
-                  ],
-                },
-                {
-                  sub: "c. Device & Technical Data",
-                  tag: "May be linked to your identity",
+                  sub: "b. Orders & Wishlist Data",
+                  tag: "Service Essential",
                   tagColor: "#fbbf24",
                   items: [
-                    "Device type, operating system, and app version",
-                    "App interaction and usage data",
-                    "Log and diagnostic data (for debugging, security, and service reliability)",
-                    "IP address (retained in server logs)",
+                    "Order selections, active cart contents, and past order history",
+                    "Selected canteen / food stall choices within your community",
+                    "Wishlist saved items and food preferences",
                   ],
                 },
                 {
-                  sub: "d. Notification Data",
-                  tag: "Linked to your identity",
-                  tagColor: "#f87171",
+                  sub: "c. Wallet & Refund Balance Records",
+                  tag: "Transactional",
+                  tagColor: "#fbbf24",
                   items: [
-                    "Device push notification token (used solely to deliver transactional notifications to your device)",
+                    "Refund balances issued by specific canteens",
+                    "Transaction history (credits, debits, order refunds)",
+                    "Payment confirmation reference status",
                   ],
                 },
                 {
-                  sub: "e. User-Submitted Content",
-                  tag: "Linked to your identity",
-                  tagColor: "#f87171",
-                  items: ["Reviews, ratings, or feedback submitted within the App"],
-                },
-                {
-                  sub: "f. Analytics Data",
-                  tag: "Not linked to your identity",
+                  sub: "d. App Notifications & Usage",
+                  tag: "Operational",
                   tagColor: "#10b981",
                   items: [
-                    "Aggregated, anonymised app usage and performance data used to improve the App",
+                    "Device notification tokens used solely for order status updates (e.g., Preparing, Ready for Pickup)",
+                    "App version and basic device diagnostic logs to resolve technical issues",
                   ],
                 },
               ].map((block) => (
@@ -394,7 +345,7 @@ export default function CafeAuraPrivacyPolicy() {
                   <div className="flex items-center gap-2.5 mb-1.5">
                     <p
                       className="text-[13px] font-semibold"
-                      style={{ color: "rgba(255,255,255,0.65)" }}
+                      style={{ color: "rgba(255,255,255,0.7)" }}
                     >
                       {block.sub}
                     </p>
@@ -418,88 +369,63 @@ export default function CafeAuraPrivacyPolicy() {
               ))}
             </div>
             <div
-              className="mt-4 px-4 py-3 rounded-xl text-[13px] leading-[1.8]"
+              className="mt-3 px-4 py-3 rounded-xl text-[13px] leading-[1.8]"
               style={{
                 background: "rgba(255,255,255,0.03)",
                 border: "1px solid rgba(255,255,255,0.07)",
-                color: "rgba(255,255,255,0.4)",
+                color: "rgba(255,255,255,0.45)",
               }}
             >
-              <span className="font-semibold" style={{ color: "rgba(255,255,255,0.6)" }}>
-                Cross-App Tracking:
+              <span className="font-semibold" style={{ color: "rgba(255,255,255,0.65)" }}>
+                No Advertising Tracking:
               </span>{" "}
-              We do <span className="font-bold text-white">not</span> track you
-              across third-party apps or websites for advertising purposes. All
-              data collected is used solely to operate and improve Cafeaura.
+              We do <span className="font-bold text-white">not</span> track you across external websites or third-party apps for commercial advertising.
             </div>
           </Section>
 
           {/* 3 */}
-          <Section title="3. How We Use Your Data">
+          <Section title="3. How We Use Your Information">
             <p
               className="text-[13.5px] leading-[1.8] mb-2.5"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              We use your data to:
+              We process your data strictly to provide and maintain the CafeAura platform:
             </p>
             <ul className="flex flex-col gap-1.5 pl-1 mb-3">
               {[
-                "Create, verify, and manage your account",
-                "Authenticate and authorise institutional access",
-                "Process orders, wallet transactions, refunds, and cancellations",
-                "Display your order history and wallet balance within the App",
-                "Send transactional notifications (order confirmations, wallet updates, account alerts)",
-                "Detect and prevent fraud, abuse, or unauthorised access",
-                "Diagnose crashes, fix bugs, and improve App performance",
-                "Conduct internal analytics to improve the service",
-                "Provide customer support and respond to your requests",
-                "Comply with legal, regulatory, and contractual obligations",
-                "Maintain audit records for financial and security purposes",
+                "Account creation, authentication, and community verification",
+                "Processing food orders and displaying live kitchen status",
+                "Managing per-canteen refund wallet balances and transaction records",
+                "Sending order updates and pickup notifications to your device",
+                "Preventing unauthorized access, fraudulent activity, or system abuse",
+                "Providing customer support and resolving order discrepancies",
+                "Maintaining service reliability, fixing bugs, and improving user experience",
               ].map((item) => (
                 <Bullet key={item} text={item} />
               ))}
             </ul>
-            <p
-              className="text-[13px] leading-[1.8]"
-              style={{ color: "rgba(255,255,255,0.35)" }}
-            >
-              We do <strong className="text-white/60">not</strong> use your data
-              for advertising, profiling, or sale to third parties.
-            </p>
           </Section>
 
           {/* 4 */}
-          <Section title="4. Payments & Wallet">
+          <Section title="4. Payments & Refund Wallet Terms">
             <p
               className="text-[13.5px] leading-[1.8] mb-3"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              Cafeaura uses authorised third-party payment gateways to process payments. We do{" "}
-              <strong className="text-white/60">not</strong> store sensitive
-              financial data such as card numbers, CVVs, or bank credentials on
-              our own servers. We store only:
+              Payments for orders placed through CafeAura are processed through secure, authorized channels.
+              We do <strong className="text-white/70">not</strong> store sensitive card numbers, CVVs, or online banking passwords on our platform.
             </p>
-            <ul className="flex flex-col gap-1.5 pl-1 mb-4">
-              {[
-                "Transaction reference IDs",
-                "Payment status (success / failed / pending)",
-                "Wallet balance and credit/debit records",
-              ].map((item) => (
-                <Bullet key={item} text={item} />
-              ))}
-            </ul>
             <p
-              className="text-[12.5px] font-semibold mb-2"
-              style={{ color: "rgba(255,255,255,0.6)" }}
+              className="text-[13px] font-semibold mb-2"
+              style={{ color: "rgba(255,255,255,0.7)" }}
             >
-              Wallet Terms
+              Refund Wallet Policy
             </p>
-            <ul className="flex flex-col gap-1.5 pl-1">
+            <ul className="flex flex-col gap-1.5 pl-1 mb-3">
               {[
-                "Wallet credits are issued as in-app balance for use within Cafeaura only",
-                "Wallet credits are non-transferable and non-withdrawable except where required by applicable law",
-                "Refunds for cancelled orders are credited to your in-app wallet balance",
-                "Refunds to the original payment method are not provided unless required by law",
+                "Refunds granted for cancelled or unfulfilled orders are issued to your in-app wallet balance.",
+                "Refund balances are scoped to the specific canteen that issued the refund and are redeemable only at that canteen.",
+                "In-app wallet balances are non-transferable between users or canteens and cannot be withdrawn as cash, unless required by applicable law.",
               ].map((item) => (
                 <Bullet key={item} text={item} />
               ))}
@@ -507,202 +433,75 @@ export default function CafeAuraPrivacyPolicy() {
           </Section>
 
           {/* 5 */}
-          <Section title="5. Third-Party Services & SDKs">
+          <Section title="5. Data Sharing & Disclosure">
             <p
-              className="text-[13.5px] leading-[1.8] mb-3"
+              className="text-[13.5px] leading-[1.8] mb-2.5"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              We integrate the following third-party providers. Each provider
-              processes data only as necessary to deliver their service and does
-              not use your data for their own marketing purposes:
+              We respect your privacy and do <strong className="text-white/70">not</strong> sell or rent your personal information to any third parties. We share limited information solely in the following circumstances:
             </p>
-            <DataTable
-              headers={["Provider", "Purpose", "Privacy Policy"]}
-              rows={[
-                [
-                  <span className="font-semibold text-white/70">Supabase</span>,
-                  "Authentication, database, and real-time data",
-                  <a
-                    href="https://supabase.com/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 underline underline-offset-2 hover:opacity-70 transition-opacity"
-                    style={{ color: A }}
-                  >
-                    supabase.com/privacy
-                    <ExternalLink size={10} />
-                  </a>,
-                ],
-                [
-                  <span className="font-semibold text-white/70">Firebase (Google)</span>,
-                  "Push notifications and crash reporting",
-                  <a
-                    href="https://firebase.google.com/support/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 underline underline-offset-2 hover:opacity-70 transition-opacity"
-                    style={{ color: A }}
-                  >
-                    firebase.google.com
-                    <ExternalLink size={10} />
-                  </a>,
-                ],
-                [
-                  <span className="font-semibold text-white/70">Sentry</span>,
-                  "Crash reporting and diagnostics",
-                  <a
-                    href="https://sentry.io/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 underline underline-offset-2 hover:opacity-70 transition-opacity"
-                    style={{ color: A }}
-                  >
-                    sentry.io/privacy
-                    <ExternalLink size={10} />
-                  </a>,
-                ],
-                [
-                  <span className="font-semibold text-white/70">PostHog</span>,
-                  "Product analytics (anonymised)",
-                  <a
-                    href="https://posthog.com/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 underline underline-offset-2 hover:opacity-70 transition-opacity"
-                    style={{ color: A }}
-                  >
-                    posthog.com/privacy
-                    <ExternalLink size={10} />
-                  </a>,
-                ],
-                [
-                  <span className="font-semibold text-white/70">Payment Gateway</span>,
-                  "Payment processing",
-                  <a
-                    href="https://razorpay.com/privacy/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 underline underline-offset-2 hover:opacity-70 transition-opacity"
-                    style={{ color: A }}
-                  >
-                    razorpay.com/privacy
-                    <ExternalLink size={10} />
-                  </a>,
-                ],
-              ]}
-            />
+            <ul className="flex flex-col gap-1.5 pl-1 mb-3">
+              {[
+                "Canteen Staff & Kitchen Admin — Your name, token number, and order items are shared with the designated canteen for order preparation and pickup verification.",
+                "Community / Campus Administrators — Aggregated operational reporting for facility management.",
+                "Legal Compliance — When required by law, regulation, or valid legal requests.",
+              ].map((item) => (
+                <Bullet key={item} text={item} />
+              ))}
+            </ul>
           </Section>
 
           {/* 6 */}
-          <Section title="6. Data Sharing">
+          <Section title="6. Data Security">
             <p
               className="text-[13.5px] leading-[1.8] mb-2.5"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              We do <strong className="text-white/60">not</strong> sell, rent, or
-              trade your personal data. We share limited data only in the following
-              circumstances:
+              We implement modern technical and administrative safeguards to protect your personal information:
             </p>
             <ul className="flex flex-col gap-1.5 pl-1 mb-3">
               {[
-                "Canteen or institution administrators — name and order details shared for order fulfilment within your institution",
-                "Payment gateway providers — transaction data processed solely for payment execution",
-                "Service providers listed in Section 5 — data shared only as necessary to operate the App",
-                "Legal obligations — when required by applicable law, court order, or lawful government authority",
-                "Safety and security — to protect the rights, property, or safety of users, the Company, or the public",
+                "Encrypted data transmission over HTTPS / TLS protocols",
+                "Secure token-based user authentication",
+                "Role-based administrative access controls to protect user data",
+                "Continuous security monitoring and system logging",
               ].map((item) => (
                 <Bullet key={item} text={item} />
               ))}
             </ul>
-            <p
-              className="text-[13px] leading-[1.8]"
-              style={{ color: "rgba(255,255,255,0.35)" }}
-            >
-              All sharing is limited to what is strictly necessary for the stated
-              purpose.
-            </p>
           </Section>
 
           {/* 7 */}
-          <Section title="7. Data Security">
-            <p
-              className="text-[13.5px] leading-[1.8] mb-2.5"
-              style={{ color: "rgba(255,255,255,0.5)" }}
-            >
-              We implement appropriate technical and organisational safeguards,
-              including:
-            </p>
-            <ul className="flex flex-col gap-1.5 pl-1 mb-3">
-              {[
-                "Encryption in transit (HTTPS / TLS) for all data communications",
-                "Secure, token-based authentication systems",
-                "Role-based access controls limiting who can access user data",
-                "Regular security monitoring and audit logging",
-              ].map((item) => (
-                <Bullet key={item} text={item} />
-              ))}
-            </ul>
-            <p
-              className="text-[13px] leading-[1.8]"
-              style={{ color: "rgba(255,255,255,0.35)" }}
-            >
-              No system is completely secure. While we take reasonable precautions,
-              we cannot guarantee absolute security. In the event of a data breach
-              that affects your rights and freedoms, we will notify you and relevant
-              authorities as required by applicable law.
-            </p>
+          <Section title="7. Data Retention">
+            <DataTable
+              headers={["Category", "Retention Standard"]}
+              rows={[
+                ["Active Accounts", "Retained while your account remains active"],
+                ["Order & Transaction History", "Retained for accounting, auditing, and tax compliance"],
+                ["Account Deletion Requests", "Data purged within 45 days of request"],
+              ]}
+            />
           </Section>
 
           {/* 8 */}
-          <Section title="8. Data Retention">
-            <DataTable
-              headers={["Scenario", "Retention Period"]}
-              rows={[
-                ["Active account", "Duration of account activity"],
-                ["After deletion request", "Up to 45 days for full deletion"],
-                [
-                  "Financial / transaction records",
-                  "As required by applicable accounting and tax law",
-                ],
-                [
-                  "Legal, fraud prevention, or dispute records",
-                  "As required by law or until resolution",
-                ],
-                [
-                  "Anonymised analytics data",
-                  "Indefinitely (no personal identifiers retained)",
-                ],
-              ]}
-            />
-            <p
-              className="text-[13px] leading-[1.8] mt-3"
-              style={{ color: "rgba(255,255,255,0.35)" }}
-            >
-              After the applicable retention period, personal data is deleted or
-              irreversibly anonymised.
-            </p>
-          </Section>
-
-          {/* 9 */}
-          <Section title="9. Account Deletion">
+          <Section title="8. Account Deletion & Rights">
             <p
               className="text-[13.5px] leading-[1.8] mb-3"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              You can permanently delete your Cafeaura account and associated
-              personal data in either of the following ways:
+              You have full control over your personal data. You can request account deletion or data modification through either method below:
             </p>
             <div className="flex flex-col gap-2.5 mb-3">
               {[
                 {
                   step: "1",
                   label: "In-App",
-                  desc: "Navigate to Settings → Account → Delete Account within the App",
+                  desc: "Go to Profile / Settings → Delete Account inside the CafeAura App",
                 },
                 {
                   step: "2",
                   label: "By Email",
-                  desc: `Contact us at ${EMAIL} with subject line "Account Deletion Request" from your registered email address`,
+                  desc: `Send an email to ${EMAIL} with subject "Account Deletion Request" from your registered email address`,
                 },
               ].map(({ step, label, desc }) => (
                 <div
@@ -728,150 +527,54 @@ export default function CafeAuraPrivacyPolicy() {
                 </div>
               ))}
             </div>
-            <p
-              className="text-[13px] leading-[1.8] mb-3"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-            >
-              Deletion requests are processed within{" "}
-              <strong className="text-white/60">45 days</strong>. We may retain
-              limited data where necessary for legal compliance, fraud prevention,
-              financial recordkeeping, or active dispute resolution, as described
-              in Section 8.
-            </p>
             <Callout>
-              Deleting your account is permanent and irreversible. Your order
-              history, wallet balance, and profile data will be permanently removed
-              subject to the retention exceptions above.
+              Account deletion is permanent. Upon deletion, your order history, profile details, and any active refund balances associated with your account will be permanently removed, subject to legal recordkeeping retention requirements.
             </Callout>
           </Section>
 
-          {/* 10 */}
-          <Section title="10. Your Rights & Choices">
+          {/* 9 */}
+          <Section title="9. Children's Privacy">
             <p
-              className="text-[13.5px] leading-[1.8] mb-2.5"
+              className="text-[13.5px] leading-[1.8]"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              Subject to applicable law, you have the right to:
-            </p>
-            <ul className="flex flex-col gap-1.5 pl-1 mb-3">
-              {[
-                "Access — request a copy of the personal data we hold about you",
-                "Correction — request correction of inaccurate or outdated data",
-                "Deletion — request deletion of your account and personal data (see Section 9)",
-                "Restriction — request that we limit processing of your data in certain circumstances",
-                "Portability — request your data in a structured, machine-readable format where applicable",
-                "Withdraw consent — where processing is based on consent, you may withdraw it at any time",
-                "Notifications — control or disable push notifications via your device's system settings at any time",
-              ].map((item) => (
-                <Bullet key={item} text={item} />
-              ))}
-            </ul>
-            <p
-              className="text-[13px] leading-[1.8]"
-              style={{ color: "rgba(255,255,255,0.35)" }}
-            >
-              To exercise any of these rights, contact us at{" "}
+              CafeAura is intended for members of institutional communities aged 13 and above. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided personal data, please contact us at{" "}
               <a
                 href={`mailto:${EMAIL}`}
                 className="underline underline-offset-2 hover:opacity-70 transition-opacity"
                 style={{ color: A }}
               >
                 {EMAIL}
-              </a>
-              . We will respond within 30 days.
+              </a>{" "}
+              and we will promptly delete it.
+            </p>
+          </Section>
+
+          {/* 10 */}
+          <Section title="10. Changes to This Policy">
+            <p
+              className="text-[13.5px] leading-[1.8]"
+              style={{ color: "rgba(255,255,255,0.5)" }}
+            >
+              We may update this Privacy Policy from time to time to reflect service updates or regulatory changes. Any modifications will be posted on this page with an updated &quot;Last Updated&quot; date.
             </p>
           </Section>
 
           {/* 11 */}
-          <Section title="11. Children's Privacy">
-            <p
-              className="text-[13.5px] leading-[1.8] mb-2.5"
-              style={{ color: "rgba(255,255,255,0.5)" }}
-            >
-              Cafeaura is intended for users aged{" "}
-              <strong className="text-white/60">13 years and above</strong>. Users
-              between the ages of 13 and 17 should use the App only with the
-              consent and oversight of a parent, guardian, or their institution.
-            </p>
-            <p
-              className="text-[13.5px] leading-[1.8]"
-              style={{ color: "rgba(255,255,255,0.5)" }}
-            >
-              We do <strong className="text-white/60">not</strong> knowingly
-              collect personal data from children under the age of 13. If you are
-              a parent, guardian, or institution and believe a child under 13 has
-              provided personal information without appropriate authorisation,
-              please contact us immediately at{" "}
-              <a
-                href={`mailto:${EMAIL}`}
-                className="underline underline-offset-2 hover:opacity-70 transition-opacity"
-                style={{ color: A }}
-              >
-                {EMAIL}
-              </a>
-              . We will promptly review and delete the relevant information.
-            </p>
-          </Section>
-
-          {/* 12 */}
-          <Section title="12. International Data Processing">
-            <p
-              className="text-[13.5px] leading-[1.8]"
-              style={{ color: "rgba(255,255,255,0.5)" }}
-            >
-              Your data may be processed and stored on servers located outside your
-              country of residence, operated by our trusted third-party providers
-              (see Section 5). These transfers are made subject to appropriate
-              contractual and technical safeguards in compliance with applicable
-              data protection law. By using the App, you acknowledge and consent to
-              such transfers.
-            </p>
-          </Section>
-
-          {/* 13 */}
-          <Section title="13. Changes to This Policy">
-            <p
-              className="text-[13.5px] leading-[1.8] mb-2.5"
-              style={{ color: "rgba(255,255,255,0.5)" }}
-            >
-              We may update this Privacy Policy periodically to reflect changes in
-              our practices, legal requirements, or the App. When material changes
-              are made:
-            </p>
-            <ul className="flex flex-col gap-1.5 pl-1 mb-2.5">
-              {[
-                "The Effective Date at the top of this policy will be updated",
-                "Where appropriate, we will notify you via the App or by email",
-              ].map((item) => (
-                <Bullet key={item} text={item} />
-              ))}
-            </ul>
-            <p
-              className="text-[13px] leading-[1.8]"
-              style={{ color: "rgba(255,255,255,0.35)" }}
-            >
-              Your continued use of the App following the updated policy's
-              effective date constitutes your acceptance of the revised terms. We
-              encourage you to review this policy periodically.
-            </p>
-          </Section>
-
-          {/* 14 */}
-          <Section title="14. Contact Us">
+          <Section title="11. Contact Us">
             <p
               className="text-[13.5px] leading-[1.8] mb-3"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              For any questions, requests, or concerns about this Privacy Policy or
-              your personal data:
+              If you have any questions or concerns regarding this Privacy Policy or your data:
             </p>
             <div
               className="p-4 rounded-2xl"
               style={{ background: `${A}08`, border: `1px solid ${A}18` }}
             >
               <p
-                className="font-bold text-[13px] mb-1"
-                style={{ color: "rgba(255,255,255,0.8)" }}
+                className="font-bold text-[13.5px] mb-1"
+                style={{ color: "rgba(255,255,255,0.85)" }}
               >
                 Viruzverse Solutions Private Limited
               </p>
@@ -884,17 +587,17 @@ export default function CafeAuraPrivacyPolicy() {
               </a>
               <p
                 className="text-[12px] font-mono mt-2"
-                style={{ color: "rgba(255,255,255,0.3)" }}
+                style={{ color: "rgba(255,255,255,0.35)" }}
               >
-                We aim to respond to all enquiries within 5 business days.
+                Inquiries are typically addressed within 3 to 5 business days.
               </p>
             </div>
           </Section>
 
         </div>
 
-        {/* Bottom divider */}
-        <div className="mt-10 mb-6">
+        {/* Bottom Divider */}
+        <div className="mt-12 mb-6">
           <Divider opacity="30" />
         </div>
       </div>
