@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Zap, MoreVertical, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ViruzverseLogo from "../ui/ViruzverseLogo";
 
 const NAV_LINKS = [
   { href: "/",         label: "Home"     },
@@ -107,25 +108,8 @@ export default function Navbar() {
         >
 
           {/* ── Logo ── */}
-          <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
-            <div
-              className="w-8 h-8 rounded-xl flex items-center justify-center
-                         transition-all duration-300
-                         group-hover:scale-[1.1] group-hover:rotate-[-8deg]"
-              style={{
-                background: "linear-gradient(135deg,#7c3aed,#6d28d9)",
-                boxShadow: "0 4px 12px rgba(124,58,237,0.35)",
-              }}
-            >
-              <Zap size={15} fill="#fff" color="#fff" aria-hidden />
-            </div>
-            <span
-              className="text-[15px] font-extrabold tracking-[-0.03em]
-                         transition-colors duration-200 group-hover:text-[#7c3aed]"
-              style={{ color: "#0a0a0f" }}
-            >
-              Viruzverse
-            </span>
+          <Link href="/" className="flex items-center group flex-shrink-0">
+            <ViruzverseLogo size={32} textColor="#0a0a0f" />
           </Link>
 
           {/* ── Desktop links ── */}
