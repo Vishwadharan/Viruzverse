@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Zap, MapPin, Mail, ArrowUpRight } from "lucide-react";
+import ViruzverseLogo from "../ui/ViruzverseLogo";
 import { WHATSAPP_URL, LINKEDIN_URL, INSTAGRAM_URL } from "../../lib/constants";
 
 const NAV_LINKS = [
@@ -81,16 +82,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 group mb-4 w-fit">
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 group-hover:scale-110"
-                style={{ background: "linear-gradient(135deg, #7c3aed, #6d28d9)", boxShadow: "0 4px 16px rgba(124,58,237,0.4)" }}
-              >
-                <Zap size={16} fill="#ffffff" color="#ffffff" />
-              </div>
-              <span className="text-[16px] font-extrabold tracking-[-0.03em]" style={{ color: "#ffffff" }}>
-                Viruzverse
-              </span>
+            <Link href="/" className="flex items-center group mb-4 w-fit">
+              <ViruzverseLogo size={36} textColor="#ffffff" />
             </Link>
 
             <p className="text-[13px] leading-[1.8] mb-4" style={{ color: "#6b7280" }}>
